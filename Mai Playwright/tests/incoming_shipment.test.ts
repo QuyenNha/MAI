@@ -36,7 +36,6 @@ test.describe('Incoming_shipment', () => {
         await page.locator('text=Incoming Shipments').click();
 
         //Date-Tine Since
-        await page.goto('https://dev.mai-ade.com/stock/incoming-shipments');
         await page.locator('#etaSince').type('25-08-2023'); //con thgian
         await page.waitForTimeout(1000);
     });
@@ -53,7 +52,6 @@ test.describe('Incoming_shipment', () => {
         await page.locator('text=Incoming Shipments').click();
 
         //Date-Tine Until
-        await page.goto('https://dev.mai-ade.com/stock/incoming-shipments');
         await page.locator('#etaUntil').type('01-09-2023'); //con thgian
         await page.waitForTimeout(1000);
     });
