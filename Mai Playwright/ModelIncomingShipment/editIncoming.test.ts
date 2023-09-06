@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://dev.mai-ade.com/login');
 });
 
-test.describe('Receive_shipment_create', () => {
+test.describe('Incoming_shipment_create', () => {
     //Edit business partner
     test('Incoming_shipment_edit_businesspartner', async ({ page }) => {
         //Move to: Incoming Shipment
