@@ -7,12 +7,12 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://dev.mai-ade.com/login');
 });
 
-test('Incoming_shipment_searchkey', async ({ page }) => {
+test('Incoming_shipment_searchDateTimeSince', async ({ page }) => {
 
     //Move to: Incoming Shipment
     await moveIncoming(page);
 
-    //Date-Tine Since
+    //Date-Time Since
     await page.locator('#etaSince').type('25-08-2023T03:04'); //con thgian
     await page.waitForTimeout(1000);
 });

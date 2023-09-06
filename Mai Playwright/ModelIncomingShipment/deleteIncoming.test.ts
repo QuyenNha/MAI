@@ -7,7 +7,7 @@ test.beforeEach(async ({ page }) => {
     await page.goto('https://dev.mai-ade.com/login');
 });
 
-test('Incoming_shipment_searchkey', async ({ page }) => {
+test('Incoming_shipment_delete', async ({ page }) => {
 
     //Move to: Incoming Shipment
     await moveIncoming(page);
