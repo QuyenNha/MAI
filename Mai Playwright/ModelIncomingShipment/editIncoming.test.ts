@@ -160,12 +160,10 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         (await page.locator("//div[@data-testid='dropzone']")).click();
         // Wait for the file input to be visible and then set the file to upload
-        const inputFile = await page.waitForSelector("//div[@data-testid='dropzone']");
         await page.waitForTimeout(3000);
-        await inputFile.setInputFiles('F:\Mai Playwright\File\Test.txt');
-        await page.waitForTimeout(3000);
+        await page.setInputFiles("//input[@type='file']", 'F:/Mai Playwright/File/Test.txt');
         await page.waitForLoadState();
-        // (await page.locator("//button[text()='Save']")).click();
-        // await page.waitForTimeout(3000);
+        (await page.locator("//button[text()='Save']")).click();
+        await page.waitForTimeout(3000);
     });
 });
