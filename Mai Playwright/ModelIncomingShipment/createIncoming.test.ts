@@ -16,7 +16,7 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Create']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         (await page.locator("//button[@title='Clear value']")).click();
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(1000);
@@ -30,7 +30,7 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Create']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         await page.locator('#estimatedTimeofDeparture').type('02-09-2023T03:10');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
@@ -44,7 +44,7 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Create']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         await page.waitForTimeout(3000);
         await page.locator('#estimatedTimeofDeparture').type('02-09-2023T03:10');
         await page.waitForTimeout(3000);
@@ -60,13 +60,13 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Create']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         await page.waitForTimeout(3000);
         await page.locator('#estimatedTimeofArrival').type('02-09-2023T03:10');
         await page.locator('#estimatedTimeofDeparture').type('02-09-2023T03:10');
         await page.locator('#actualTimeofDeparture').type('02-09-2023T03:10');
         (await page.locator('#transportType')).click();
-        (await page.locator("//li[text()='Sea']")).click();
+        (await page.locator("(//ul[@role='listbox']//li)[2]")).click();
         await page.locator('#shipmentName').type('Ship');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[@aria-label='Add']")).click();
@@ -83,13 +83,13 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//a[@aria-label='Create']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         await page.waitForTimeout(3000);
         await page.locator('#estimatedTimeofArrival').type('02-09-2023T03:10');
         await page.locator('#estimatedTimeofDeparture').type('02-09-2023T03:10');
         await page.locator('#actualTimeofDeparture').type('02-09-2023T03:10');
         (await page.locator('#transportType')).click();
-        (await page.locator("//li[text()='Sea']")).click();
+        (await page.locator("(//ul[@role='listbox']//li)[2]")).click();
         await page.locator('#shipmentName').type('Ship');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[@aria-label='Add']")).click();

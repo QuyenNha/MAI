@@ -17,7 +17,7 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         await page.waitForSelector("//input[@role='combobox']")
         await page.locator('#supplierId').click();
-        (await page.locator('text=John')).click();
+        (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
     });
@@ -77,6 +77,8 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
+        await page.locator('#shipmentName').press('Control+A');
+        await page.locator('#shipmentName').press('Backspace');
         await page.locator('#shipmentName').type('Ship');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
@@ -89,6 +91,8 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
+        await page.locator('#comment').press('Control+A');
+        await page.locator('#comment').press('Backspace');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
@@ -145,6 +149,8 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
+        await page.locator("//input[@id='lines.0.comment']").press('Control+A');
+        await page.locator("//input[@id='lines.0.comment']").press('Backspace');
         await page.locator("//input[@id='lines.0.comment']").type('Test');
         await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Save']")).click();
@@ -159,11 +165,24 @@ test.describe('Incoming_shipment_create', () => {
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
         (await page.locator("//div[@data-testid='dropzone']")).click();
-        // Wait for the file input to be visible and then set the file to upload
         await page.waitForTimeout(3000);
         await page.setInputFiles("//input[@type='file']", 'F:/Mai Playwright/File/Test.txt');
         await page.waitForLoadState();
         (await page.locator("//button[text()='Save']")).click();
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(1000);
+    });
+
+    //Edit delete file uploaded
+    test('Incoming_shipment_edit_deletefile', async ({ page }) => {
+        //Move to: Incoming Shipment
+        await moveIncoming(page);
+
+        await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
+        (await page.locator("//a[@aria-label='Edit']")).click();
+        (await page.locator("(//div[@class='file']//button)[2]")).click();
+        await page.waitForTimeout(2000);
+        (await page.locator("//button[text()='Delete']")).click();
+        (await page.locator("//button[text()='Save']")).click();
+        await page.waitForTimeout(1000);
     });
 });

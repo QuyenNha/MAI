@@ -38,7 +38,7 @@ test.describe('Receive_shipment_create', () => {
         await moveReceive(page);
 
         (await page.locator('#id')).click();
-        (await page.locator("//li[text()='Raw materials of Liros']")).click();
+        (await page.locator("(//li[contains(@class,'MuiMenuItem-root MuiMenuItem-gutters')]/following-sibling::li)[1]")).click();
         await page.locator('#amount').type('10');
         await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Add']")).click();
@@ -51,7 +51,8 @@ test.describe('Receive_shipment_create', () => {
         await moveReceive(page);
 
         (await page.locator('#id')).click();
-        (await page.locator("//li[text()='Raw materials of John']")).click();
+        (await page.locator("(//li[contains(@class,'MuiMenuItem-root MuiMenuItem-gutters')]/following-sibling::li)[2]")).click();
+        await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Render LotNo']")).click();
         await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Add']")).click();
@@ -65,7 +66,7 @@ test.describe('Receive_shipment_create', () => {
         await moveReceive(page);
 
         (await page.locator('#id')).click();
-        (await page.locator("//li[text()='Raw materials of Edelrid']")).click();
+        (await page.locator("(//li[contains(@class,'MuiMenuItem-root MuiMenuItem-gutters')]/following-sibling::li)[3]")).click();
         await page.waitForSelector('#lotNo')
         await page.locator('#lotNo').type('19X4KF6YSI0G');
         await page.waitForTimeout(1000);
@@ -81,7 +82,7 @@ test.describe('Receive_shipment_create', () => {
         await moveReceive(page);
 
         (await page.locator('#id')).click();
-        (await page.locator("//li[text()='Raw materials of Liros']")).click();
+        (await page.locator("(//li[contains(@class,'MuiMenuItem-root MuiMenuItem-gutters')]/following-sibling::li)[5]")).click();
         await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Render LotNo']")).click();
         await page.waitForTimeout(1000);
