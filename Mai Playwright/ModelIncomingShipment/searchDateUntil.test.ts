@@ -13,6 +13,8 @@ test('Incoming_shipment_searchDateTimeUntil', async ({ page }) => {
     await moveIncoming(page);
 
     //Date-Time Until
-    await page.locator('#etaUntil').type('01-09-2023T03:04'); //con thgian
+    await page.locator('#etaUntil').type('01-09-2023');
+    await page.locator('#etaUntil').press('Tab');
+    await page.locator('#etaUntil').type('03:04');
     await page.waitForTimeout(1000);
 });

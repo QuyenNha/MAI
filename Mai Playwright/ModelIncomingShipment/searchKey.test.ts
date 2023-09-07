@@ -1,7 +1,7 @@
 //mai.spec.ts
 
 import { test, expect, Page } from '@playwright/test';
-import { moveIncoming } from './moveincoming.test';
+import { moveIncoming } from './moveIncoming.test';
 
 test.beforeEach(async ({ page }) => {
     await page.goto('https://dev.mai-ade.com/login');

@@ -13,6 +13,8 @@ test('Incoming_shipment_searchDateTimeSince', async ({ page }) => {
     await moveIncoming(page);
 
     //Date-Time Since
-    await page.locator('#etaSince').type('25-08-2023T03:04'); //con thgian
+    await page.locator('#etaSince').type('25-08-2023');
+    await page.locator('#etaSince').press('Tab');
+    await page.locator('#etaSince').type('03:04');
     await page.waitForTimeout(1000);
 });

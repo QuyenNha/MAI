@@ -29,7 +29,9 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
-        await page.locator('#estimatedTimeofArrival').type('02-09-2023T03:10');
+        await page.locator('#estimatedTimeofArrival').type('02-09-2023');
+        await page.locator('#estimatedTimeofArrival').press('Tab');
+        await page.locator('#estimatedTimeofArrival').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
     });
@@ -41,7 +43,9 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
-        await page.locator('#estimatedTimeofDeparture').type('02-09-2023T03:10');
+        await page.locator('#estimatedTimeofDeparture').type('02-09-2023');
+        await page.locator('#estimatedTimeofDeparture').press('Tab');
+        await page.locator('#estimatedTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
     });
@@ -53,7 +57,9 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
-        await page.locator('#actualTimeofDeparture').type('02-09-2023T03:10');
+        await page.locator('#actualTimeofDeparture').type('02-09-2023');
+        await page.locator('#actualTimeofDeparture').press('Tab');
+        await page.locator('#actualTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
     });
