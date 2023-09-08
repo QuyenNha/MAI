@@ -10,5 +10,7 @@ test('Incoming_shipment_searchkey', async ({ page }) => {
 
     //Keyword
     await page.locator('#query').type('aa');
+    const errorMessage = await page.locator("//div[contains(@class,'MuiToolbar-root MuiToolbar-gutters')]/following-sibling::div[1]");
+    await expect(errorMessage).toBeVisible();
     await page.waitForTimeout(1000);
 });

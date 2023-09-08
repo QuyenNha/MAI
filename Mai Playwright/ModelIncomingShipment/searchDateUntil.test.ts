@@ -12,5 +12,7 @@ test('Incoming_shipment_searchDateTimeUntil', async ({ page }) => {
     await page.locator('#etaUntil').type('01-09-2023');
     await page.locator('#etaUntil').press('Tab');
     await page.locator('#etaUntil').type('03:04');
+    const errorMessage = await page.locator("//div[contains(@class,'MuiToolbar-root MuiToolbar-gutters')]/following-sibling::div[1]");
+    await expect(errorMessage).toBeVisible();
     await page.waitForTimeout(1000);
 });

@@ -9,6 +9,7 @@ test.describe('Incoming_shipment_Download', () => {
         //Move to: Incoming Shipment
         await moveIncoming(page);
         await page.locator("//button[text()='Export']").click();
+        expect(page.getByText("//button[text()='Export']"), "Download success");
         await page.waitForTimeout(3000);
     });
 
@@ -19,6 +20,7 @@ test.describe('Incoming_shipment_Download', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("(//div[@class='file']//button)[1]")).click();
+        expect(page.getByText("(//div[@class='file']//button)[1]"), "Download success");
         await page.waitForTimeout(3000);
     });
 });

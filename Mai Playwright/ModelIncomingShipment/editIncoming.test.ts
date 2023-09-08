@@ -15,6 +15,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#supplierId').click();
         (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -29,6 +31,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#estimatedTimeofArrival').press('Tab');
         await page.locator('#estimatedTimeofArrival').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -43,6 +47,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#estimatedTimeofDeparture').press('Tab');
         await page.locator('#estimatedTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -57,6 +63,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#actualTimeofDeparture').press('Tab');
         await page.locator('#actualTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -68,7 +76,11 @@ test.describe('Incoming_shipment_create', () => {
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
         (await page.locator('#transportType')).click();
+        (await page.locator("(//ul[@role='listbox']//li)[3]")).click();
+        await page.waitForTimeout(2000);
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -81,8 +93,11 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         await page.locator('#shipmentName').press('Control+A');
         await page.locator('#shipmentName').press('Backspace');
-        await page.locator('#shipmentName').type('Ship');
+        await page.locator('#shipmentName').type('Shipment');
         (await page.locator("//button[text()='Save']")).click();
+        await page.waitForTimeout(2000);
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -97,6 +112,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#comment').press('Backspace');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -109,6 +126,9 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         (await page.locator("//button[@aria-label='Add']")).click();
         (await page.locator("//button[text()='Save']")).click();
+        expect(page.getByText('#estimatedTimeofDeparture'), "Create failed");
+        const successMessage = await page.locator("//div[@role='dialog']");
+        await expect(successMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -124,6 +144,8 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("(//option[@class='choice'])[2]")).click();
         await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//p[text()='Required']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(1000);
     });
 
@@ -140,6 +162,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.waitForTimeout(3000);
         await page.locator("//input[@inputmode='numeric']").type('20');
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(3000);
     });
 
@@ -156,6 +180,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator("//input[@id='lines.0.comment']").type('Test');
         await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(1000);
     });
 
@@ -171,6 +197,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.setInputFiles("//input[@type='file']", 'F:/Mai Playwright/File/Test.txt');
         await page.waitForLoadState();
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(1000);
     });
 
@@ -185,6 +213,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.waitForTimeout(2000);
         (await page.locator("//button[text()='Delete']")).click();
         (await page.locator("//button[text()='Save']")).click();
+        const errorMessage = await page.locator("//div[text()='Element updated']");
+        await expect(errorMessage).toBeVisible();
         await page.waitForTimeout(1000);
     });
 });
