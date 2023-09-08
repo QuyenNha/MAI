@@ -3,10 +3,6 @@
 import { test, expect, Page } from '@playwright/test';
 import { moveReceive } from './movereceive.test';
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://dev.mai-ade.com/login');
-});
-
 test.describe('Receive_shipment_create', () => {
     // Create receive input_blank_all
     test('Input_blank_all', async ({ page }) => {

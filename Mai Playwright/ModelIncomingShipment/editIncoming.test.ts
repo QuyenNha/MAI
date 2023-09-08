@@ -3,10 +3,6 @@
 import { test, expect, Page } from '@playwright/test';
 import { moveIncoming } from './moveIncoming.test';
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://dev.mai-ade.com/login');
-});
-
 test.describe('Incoming_shipment_create', () => {
     //Edit business partner
     test('Incoming_shipment_edit_businesspartner', async ({ page }) => {

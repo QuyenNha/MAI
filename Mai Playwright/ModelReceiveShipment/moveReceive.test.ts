@@ -7,10 +7,6 @@ export async function moveReceive(page: Page): Promise<void> {
     (await page.locator("//a[@aria-label='Receive Shipment']")).click();
 }
 
-test.beforeEach(async ({ page }) => {
-    await page.goto('https://dev.mai-ade.com/login');
-});
-
 test('Move moveReceive Shipment', async ({ page }) => {
     await moveReceive(page);
 });
