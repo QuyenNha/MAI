@@ -15,9 +15,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#supplierId').click();
         (await page.locator("//ul[@id='supplierId-listbox']//li[1]")).click();
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit estimatedTimeofArrival
@@ -31,9 +30,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#estimatedTimeofArrival').press('Tab');
         await page.locator('#estimatedTimeofArrival').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit estimatedTimeofDeparture
@@ -47,9 +45,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#estimatedTimeofDeparture').press('Tab');
         await page.locator('#estimatedTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit actualTimeofDeparture
@@ -63,9 +60,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#actualTimeofDeparture').press('Tab');
         await page.locator('#actualTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit transportType
@@ -79,9 +75,8 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("(//ul[@role='listbox']//li)[3]")).click();
         await page.waitForTimeout(2000);
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit shipmentName
@@ -96,9 +91,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#shipmentName').type('Shipment');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(2000);
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit comment
@@ -112,9 +106,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator('#comment').press('Backspace');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit Add
@@ -126,10 +119,11 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         (await page.locator("//button[@aria-label='Add']")).click();
         (await page.locator("//button[text()='Save']")).click();
-        expect(page.getByText('#estimatedTimeofDeparture'), "Create failed");
-        const successMessage = await page.locator("//div[@role='dialog']");
-        await expect(successMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        await page.waitForTimeout(2000);
+        expect(page.getByText('#estimatedTimeofDeparture'), "Edit failed");
+        const EditUnSuccess = await page.locator("//div[@role='dialog']");
+
+        await expect(EditUnSuccess).toBeVisible();
     });
 
     //Edit placehold not amount
@@ -144,9 +138,9 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("(//option[@class='choice'])[2]")).click();
         await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Save']")).click();
+        await page.waitForTimeout(2000);
         const errorMessage = await page.locator("//p[text()='Required']");
         await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(1000);
     });
 
     //Edit placehold amount
@@ -156,15 +150,13 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
-        (await page.locator("//button[@aria-label='Add']")).click();
         (await page.locator("//input[@id='placehold']")).click();
         (await page.locator("(//option[@class='choice'])[2]")).click();
         await page.waitForTimeout(3000);
         await page.locator("//input[@inputmode='numeric']").type('20');
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
 
@@ -180,9 +172,8 @@ test.describe('Incoming_shipment_create', () => {
         await page.locator("//input[@id='lines.0.comment']").type('Test');
         await page.waitForTimeout(1000);
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(1000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
     //Edit upload file
@@ -197,9 +188,9 @@ test.describe('Incoming_shipment_create', () => {
         await page.setInputFiles("//input[@type='file']", 'F:/Mai Playwright/File/Test.txt');
         await page.waitForLoadState();
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(1000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
+        await page.waitForTimeout(3000);
     });
 
     //Edit delete file uploaded
@@ -213,8 +204,7 @@ test.describe('Incoming_shipment_create', () => {
         await page.waitForTimeout(2000);
         (await page.locator("//button[text()='Delete']")).click();
         (await page.locator("//button[text()='Save']")).click();
-        const errorMessage = await page.locator("//div[text()='Element updated']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(1000);
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 });

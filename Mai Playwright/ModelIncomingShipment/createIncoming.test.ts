@@ -20,7 +20,6 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
         expect(page.getByText('#estimatedTimeofDeparture'), "Create failed");
-        await page.waitForTimeout(3000);
     });
 
     //Create blank businesspartner
@@ -40,9 +39,8 @@ test.describe('Receive_shipment_create', () => {
         await page.locator('#estimatedTimeofDeparture').type('03:04');
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(2000);
-        const errorMessage = await page.locator("//div[text()='The system failed, please try again later.']");
-        await expect(errorMessage).toBeVisible();
-        await page.waitForTimeout(2000);
+        const CreatedUnSuccess = await page.locator("//div[text()='The system failed, please try again later.']");
+        await expect(CreatedUnSuccess).toBeVisible();
     });
 
     //Create blank estimatedTimeofDeparture
@@ -59,7 +57,6 @@ test.describe('Receive_shipment_create', () => {
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(3000);
         expect(page.getByText('#estimatedTimeofDeparture'), "Create failed");
-        await page.waitForTimeout(3000);
 
     });
 
@@ -78,9 +75,8 @@ test.describe('Receive_shipment_create', () => {
         await page.locator('#estimatedTimeofDeparture').type('03:04');
         await page.waitForTimeout(2000);
         (await page.locator("//button[text()='Save']")).click();
-        const successMessage = await page.locator("//div[text()='Element created']");
-        await expect(successMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const CreatedSuccess = await page.locator("//div[text()='Element created']");
+        await expect(CreatedSuccess).toBeVisible();
     });
 
     //Create fill all fields but no line
@@ -108,9 +104,8 @@ test.describe('Receive_shipment_create', () => {
         await page.locator('#shipmentName').type('Ship');
         await page.locator('#comment').type('Test');
         (await page.locator("//button[text()='Save']")).click();
-        const successMessage = await page.locator("//div[text()='Element created']");
-        await expect(successMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const CreatedSuccess = await page.locator("//div[text()='Element created']");
+        await expect(CreatedSuccess).toBeVisible();
     });
 
     //Create fill all fields but no line has click add
@@ -141,9 +136,8 @@ test.describe('Receive_shipment_create', () => {
         await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Save']")).click();
         expect(page.getByText('#estimatedTimeofDeparture'), "Create failed");
-        const successMessage = await page.locator("//div[@role='dialog']");
-        await expect(successMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const CreatedUnSuccess = await page.locator("//div[@role='dialog']");
+        await expect(CreatedUnSuccess).toBeVisible();
     });
 
     //Create fill all fields
@@ -177,8 +171,7 @@ test.describe('Receive_shipment_create', () => {
         await page.locator("//input[@inputmode='numeric']").type('10');
         await page.locator("//input[@id='lines.0.comment']").type('Test');
         (await page.locator("//button[text()='Save']")).click();
-        const successMessage = await page.locator("//div[text()='Element created']");
-        await expect(successMessage).toBeVisible();
-        await page.waitForTimeout(3000);
+        const CreatedSuccess = await page.locator("//div[text()='Element created']");
+        await expect(CreatedSuccess).toBeVisible();
     });
 });

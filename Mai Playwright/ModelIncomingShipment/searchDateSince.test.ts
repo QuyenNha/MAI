@@ -12,7 +12,7 @@ test('Incoming_shipment_searchDateTimeSince', async ({ page }) => {
     await page.locator('#etaSince').type('25-08-2023');
     await page.locator('#etaSince').press('Tab');
     await page.locator('#etaSince').type('03:04');
-    const errorMessage = await page.locator("//div[contains(@class,'MuiToolbar-root MuiToolbar-gutters')]/following-sibling::div[1]");
-    await expect(errorMessage).toBeVisible();
+    const showResult = await page.locator("//div[contains(@class,'MuiToolbar-root MuiToolbar-gutters')]/following-sibling::div[1]");
+    await expect(showResult).toBeVisible();
     await page.waitForTimeout(1000);
 });
