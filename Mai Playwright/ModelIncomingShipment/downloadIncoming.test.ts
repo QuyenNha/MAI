@@ -19,6 +19,7 @@ test.describe('Incoming_shipment_Download', () => {
         await moveIncoming(page);
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
+        await page.waitForTimeout(3000);
         (await page.locator("(//div[@class='file']//button)[1]")).click();
         expect(page.getByText("(//div[@class='file']//button)[1]"), "Download success");
         await page.waitForTimeout(3000);

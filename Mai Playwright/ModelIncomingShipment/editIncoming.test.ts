@@ -117,34 +117,34 @@ test.describe('Incoming_shipment_create', () => {
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
+        await page.waitForTimeout(3000);
         (await page.locator("//button[@aria-label='Add']")).click();
+        await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Save']")).click();
-        await page.waitForTimeout(2000);
         expect(page.getByText('#estimatedTimeofDeparture'), "Edit failed");
         const EditUnSuccess = await page.locator("//div[@role='dialog']");
-
         await expect(EditUnSuccess).toBeVisible();
+        await page.waitForTimeout(2000);
     });
 
-    //Edit placehold not amount
-    test('Incoming_shipment_edit_placeholdnotamount', async ({ page }) => {
+    //Edit placehold
+    test('Incoming_shipment_edit_placehold', async ({ page }) => {
         //Move to: Incoming Shipment
         await moveIncoming(page);
 
         await page.click("//table[contains(@class,'MuiTable-root RaDatagrid-table')]/tbody[1]/tr[1]");
         (await page.locator("//a[@aria-label='Edit']")).click();
-        (await page.locator("//button[@aria-label='Add']")).click();
         (await page.locator("//input[@id='placehold']")).click();
         (await page.locator("(//option[@class='choice'])[2]")).click();
         await page.waitForTimeout(3000);
         (await page.locator("//button[text()='Save']")).click();
         await page.waitForTimeout(2000);
-        const errorMessage = await page.locator("//p[text()='Required']");
-        await expect(errorMessage).toBeVisible();
+        const EditSuccess = await page.locator("//div[text()='Element updated']");
+        await expect(EditSuccess).toBeVisible();
     });
 
-    //Edit placehold amount
-    test('Incoming_shipment_edit_placeholdamount', async ({ page }) => {
+    //Edit amount
+    test('Incoming_shipment_edit_amount', async ({ page }) => {
         //Move to: Incoming Shipment
         await moveIncoming(page);
 
@@ -188,6 +188,7 @@ test.describe('Incoming_shipment_create', () => {
         await page.setInputFiles("//input[@type='file']", 'F:/Mai Playwright/File/Test.txt');
         await page.waitForLoadState();
         (await page.locator("//button[text()='Save']")).click();
+        await page.waitForTimeout(3000);
         const EditSuccess = await page.locator("//div[text()='Element updated']");
         await expect(EditSuccess).toBeVisible();
         await page.waitForTimeout(3000);
