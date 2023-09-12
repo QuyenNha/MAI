@@ -104,7 +104,7 @@ test.describe('Incoming_shipment_create', () => {
         (await page.locator("//a[@aria-label='Edit']")).click();
         await page.locator('#comment').press('Control+A');
         await page.locator('#comment').press('Backspace');
-        await page.locator('#comment').type('Test');
+        await page.locator('#comment').type('Tester');
         (await page.locator("//button[text()='Save']")).click();
         const EditSuccess = await page.locator("//div[text()='Element updated']");
         await expect(EditSuccess).toBeVisible();
